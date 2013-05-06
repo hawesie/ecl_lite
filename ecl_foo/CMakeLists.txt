@@ -20,8 +20,13 @@ catkin_package(
 
 include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
 
-add_library(ecl_foo f.cpp)
-add_executable(dude main.cpp)
-target_link_libraries(dude ecl_foo)
+#add_library(ecl_foo f.cpp)
+#add_executable(dude main.cpp)
+#target_link_libraries(dude ecl_foo)
+#add_executable(dude2 main.cpp f.cpp)
 
-install(TARGETS dude DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+#add_subdirectory(test)
+#add_subdirectory(crane)
+add_subdirectory(dude)
+
+#install(TARGETS dude DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
