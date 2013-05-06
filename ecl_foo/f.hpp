@@ -44,11 +44,15 @@
 ** Includes
 *****************************************************************************/
 
-ecl_foo_PUBLIC void fooDude();
+ecl_foo_PUBLIC void inline_dude();
+ecl_foo_PUBLIC void dude();
 
-inline const std::string& fiasco() {
+inline const std::string& inline_fiasco() {
   static std::string fiasco_str = "fiasco";
   fiasco_str = fiasco_str + '.';
   return fiasco_str;
 }
+
+ecl_foo_PUBLIC const std::string& fiasco();
+
 #endif /* F_HPP_ */
