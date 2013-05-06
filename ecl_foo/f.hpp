@@ -19,19 +19,26 @@
 /*****************************************************************************
 ** PreProcessing
 *****************************************************************************/
-#define ECL_HELPER_IMPORT __declspec(dllimport)
-#define ECL_HELPER_EXPORT __declspec(dllexport)
-#define ECL_HELPER_LOCAL
+
+#ifdef _MSC_VER
+  #define ECL_HELPER_IMPORT __declspec(dllimport)
+  #define ECL_HELPER_EXPORT __declspec(dllexport)
+  #define ECL_HELPER_LOCAL
+#endif
 
 /*
  * Import/exports symbols for the library
  */
-#ifdef ecl_foo_EXPORTS // we are building a shared lib/dll
-  #define ecl_foo_PUBLIC ECL_HELPER_EXPORT
-#else // we are using shared lib/dll
-  #define ecl_foo_PUBLIC ECL_HELPER_IMPORT
+#ifdef _MSC_VER
+  #ifdef ecl_foo_EXPORTS // we are building a shared lib/dll
+    #define ecl_foo_PUBLIC ECL_HELPER_EXPORT
+  #else // we are using shared lib/dll
+    #define ecl_foo_PUBLIC ECL_HELPER_IMPORT
+  #endif
+  #define ecl_foo_LOCAL ECL_HELPERS_LOCAL
+#else
+  #define ecl_foo_PUBLIC
 #endif
-#define ecl_foo_LOCAL ECL_HELPERS_LOCAL
 
 /*****************************************************************************
 ** Includes
