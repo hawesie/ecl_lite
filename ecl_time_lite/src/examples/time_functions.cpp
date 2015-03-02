@@ -90,6 +90,8 @@ int main() {
     std::cout << "  nsec: " << timestamp.tv_nsec << std::endl;
 #endif
 
+#if defined(ECL_HAS_POSIX_TIMERS) || defined (ECL_HAS_RT_TIMERS)
+
     std::cout << std::endl;
     std::cout << "***********************************************************" << std::endl;
     std::cout << "                      Date String" << std::endl;
@@ -97,6 +99,8 @@ int main() {
     std::cout << std::endl;
 
     std::cout << "Date String: " << ecl::get_date_string() << std::endl;
+
+#endif
 
     std::cout << std::endl;
     std::cout << "***********************************************************" << std::endl;
